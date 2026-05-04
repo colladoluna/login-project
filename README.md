@@ -28,4 +28,8 @@ Tabla usuarios con campos de control (activo, fecha creación, último acceso)
 Tabla sesiones_log para auditoría de accesos
 3 usuarios de prueba incluidos
 
+Capura
+
+<img width="538" height="390" alt="image" src="https://github.com/user-attachments/assets/c4f007d3-b608-4937-802f-47db0995372c" />
+
 Instalación. La aplicación web se despliega en local utilizando XAMPP
