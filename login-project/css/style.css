@@ -1,0 +1,304 @@
+/* =============================================
+   VARIABLES & RESET
+   ============================================= */
+:root {
+  --verde-oscuro:    #0a1f0e;
+  --verde-medio:     #1a3a20;
+  --verde-panel:     #112617;
+  --verde-borde:     #2d6a35;
+  --verde-acento:    #4caf50;
+  --verde-claro:     #81c784;
+  --verde-hover:     #66bb6a;
+  --texto-principal: #d4edda;
+  --texto-suave:     #7cb07f;
+  --error:           #e57373;
+  --error-bg:        #1a0d0d;
+  --success:         #4caf50;
+  --success-bg:      #0d1a0d;
+  --font-mono:       'Share Tech Mono', monospace;
+  --font-body:       'Nunito', sans-serif;
+  --radio:           6px;
+  --sombra:          0 8px 32px rgba(0,0,0,0.5);
+  --transicion:      0.25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--verde-oscuro);
+  color: var(--texto-principal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* =============================================
+   FONDO CON REJILLA
+   ============================================= */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 0%, #1a3a20 0%, var(--verde-oscuro) 70%);
+}
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(76,175,80,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76,175,80,0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to   { background-position: 40px 40px; }
+}
+
+/* =============================================
+   CONTENEDOR PRINCIPAL
+   ============================================= */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  animation: fadeUp 0.5s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================================
+   TARJETA
+   ============================================= */
+.card {
+  background: var(--verde-panel);
+  border: 1px solid var(--verde-borde);
+  border-radius: 12px;
+  padding: 40px 36px;
+  box-shadow: var(--sombra), 0 0 40px rgba(76,175,80,0.08) inset;
+}
+
+/* =============================================
+   LOGO
+   ============================================= */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+
+.logo-icon {
+  color: var(--verde-acento);
+  font-size: 22px;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.9); }
+}
+
+.logo-text {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  letter-spacing: 6px;
+  color: var(--verde-acento);
+}
+
+/* =============================================
+   ALERTAS
+   ============================================= */
+.alert {
+  padding: 10px 14px;
+  border-radius: var(--radio);
+  font-size: 13px;
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+}
+
+.alert-error {
+  background: var(--error-bg);
+  border: 1px solid var(--error);
+  color: var(--error);
+}
+
+.alert-success {
+  background: var(--success-bg);
+  border: 1px solid var(--success);
+  color: var(--success);
+}
+
+/* =============================================
+   CAMPOS DEL FORMULARIO
+   ============================================= */
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  letter-spacing: 2px;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--verde-borde);
+  font-size: 10px;
+  pointer-events: none;
+  transition: color var(--transicion);
+}
+
+.input-wrap:focus-within .input-icon {
+  color: var(--verde-acento);
+}
+
+.input-wrap input {
+  width: 100%;
+  background: var(--verde-oscuro);
+  border: 1px solid var(--verde-borde);
+  border-radius: var(--radio);
+  padding: 11px 14px 11px 32px;
+  color: var(--texto-principal);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.input-wrap input::placeholder {
+  color: #2d5a30;
+}
+
+.input-wrap input:focus {
+  border-color: var(--verde-acento);
+  box-shadow: 0 0 0 3px rgba(76,175,80,0.15);
+}
+
+/* =============================================
+   OPCIONES (remember + forgot)
+   ============================================= */
+.options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  font-size: 12px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  color: var(--texto-suave);
+}
+
+.remember input[type="checkbox"] {
+  accent-color: var(--verde-acento);
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.forgot {
+  color: var(--verde-claro);
+  text-decoration: none;
+  transition: color var(--transicion);
+}
+
+.forgot:hover {
+  color: var(--verde-hover);
+  text-decoration: underline;
+}
+
+/* =============================================
+   BOTÓN PRINCIPAL
+   ============================================= */
+.btn-login {
+  width: 100%;
+  padding: 13px;
+  background: var(--verde-acento);
+  color: var(--verde-oscuro);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radio);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background var(--transicion), transform var(--transicion), box-shadow var(--transicion);
+  box-shadow: 0 4px 16px rgba(76,175,80,0.25);
+}
+
+.btn-login:hover {
+  background: var(--verde-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+}
+
+.btn-login:active {
+  transform: translateY(0);
+}
+
+/* =============================================
+   ENLACE REGISTRO
+   ============================================= */
+.register-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+.register-link a {
+  color: var(--verde-claro);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transicion);
+}
+
+.register-link a:hover {
+  color: var(--verde-acento);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 24px;
+  }
+}
